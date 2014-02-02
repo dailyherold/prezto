@@ -36,10 +36,8 @@ if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 fi
 
-# Generate a Alt+R when the control key is pressed and released by itself.
 # Run xcape once.
-if [ -z $XCAPE ] ; then
-    export XCAPE=1
-    ~/xcape/xcape -e 'Control_L=Escape'
+if [ -z "$(pgrep xcape)" ]; then
+    ~/repos/git/xcape/xcape -e 'Control_L=Escape'
 fi
 
